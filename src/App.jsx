@@ -12,7 +12,7 @@ import PantryPage from "./pages/PantryPage";
 import MealPlannerPage from "./pages/MealPlannerPage";
 import HistoryPage from "./pages/HistoryPage";
 import ShoppingMode from "./pages/ShoppingMode";
-import SharedListPage from "./Pages/SharedListPage"
+import SharedListPage from "./pages/SharedListPage"
 import NutritionPage from "./pages/NutritionPage";
 function App() {
   return (
