@@ -97,20 +97,31 @@ This page allows users to log in to their account.
 ![Login Page](./screenshots/LoginPage.png)
 Dashboard
 This page shows a summary of grocery activity and spending.
-![Dashboard Page](./screenshots/DashboardPage.png)
-grocerysharing.png
+![Dashboard Page](./screenshots/Dashboard.png)
+
+grocerysharing
 This page allows users to create and manage their grocery list.
 ![grocerysharing Page](./screenshots/grocerysharing.png)
+
+
 ![grocery Page](./screenshots/groceryPage.png)
+
+
 ShoopingPage
 This page helps users track purchased items and calculate the total bill.
 ![shooping Page](./screenshots/shoopingPage.png)
+
+
 PantryPage
 This page helps users track pantry items and expiry dates.
-![pantry Page](./screenshots/pantryPage.png)
+![pantry Page](./screenshots/PantryPage.png)
+
+
 meal
 This page allows users to plan meals and see suggestions.
-![meal Page](./screenshots/mealPage.png)
+![meal Page](./screenshots/meal.png)
+
+
 HistoryPage
 This page shows past shopping records and spending details.
 ![History Page](./screenshots/HistoryPage.png)
