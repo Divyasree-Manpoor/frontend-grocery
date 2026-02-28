@@ -1,16 +1,116 @@
-# React + Vite
+🛒 Grocery List Manager – Frontend
+📌 Project Title
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Grocery List Manager – Smart Grocery Planning Application
 
-Currently, two official plugins are available:
+**📖 Project Description**
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The Grocery List Manager is a full-stack web application developed to simplify grocery shopping, reduce food waste, and improve budget management.
 
-## React Compiler
+This frontend application is built using React.js and provides an interactive user interface for managing grocery lists, pantry inventory, meal planning, shopping mode, budget tracking, and nutrition analytics.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+The frontend is fully integrated with a Node.js + Express backend and Supabase (PostgreSQL) database, ensuring proper data storage, authentication, and real-time updates.
 
-## Expanding the ESLint configuration
+**✨ Features**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+🔐 User Authentication (Register & Login with JWT)
+
+🛒 Create and Manage Grocery Lists
+
+🥫 Pantry Management with Expiry Tracking
+
+🍽 Meal Planning and Suggestions
+
+💰 Budget Tracking and Spending Overview
+
+🛍 Shopping Mode with Real-time Bill Calculation
+
+📊 Nutrition Dashboard (Calories & Macro Charts)
+
+📜 Shopping History Tracking
+
+🛠 Tech Stack Used
+
+⚛️ React (Vite)
+
+🎨 Tailwind CSS
+
+🧩 ShadCN UI
+
+🔗 Axios (API Communication)
+
+🧠 Context API (State Management)
+
+📊 Recharts (Data Visualization)
+
+📂 Folder Structure
+
+The project follows the required clean and modular structure:
+
+src/
+│
+├── components/
+├── pages/
+├── context/
+├── services/
+├── hooks/
+├── utils/
+└── App.jsx
+
+All API calls are handled inside the services folder using Axios.
+State management is implemented using Context API.
+
+**🔗 Integration**
+
+Frontend is properly integrated with:
+
+Backend (Node.js + Express) deployed on Render
+
+Supabase Database (PostgreSQL)
+
+API Base URL:
+https://backend-grocery-19nr.onrender.com/api
+
+
+⚙️ Installation Steps
+Clone the Repository
+git clone :https://github.com/Divyasree-Manpoor/frontend-grocery
+cd frontend-grocery
+Install Dependencies
+npm install
+Start Development Server
+npm run dev
+
+Frontend deployed on Netlify.
+
+🔗 Live Link:  Netlify link here
+🔗 Backend API: https://backend-grocery-19nr.onrender.com
+
+LandingPage
+This page introduces the app and lets users go to login or register.
+![Landing Page](./screenshots/LandingPage.png)
+RegisterPage
+This page allows new users to create an account.
+![Register Page](./screenshots/RegisterPage.png)
+LoginPage
+This page allows users to log in to their account.
+![Login Page](./screenshots/LoginPage.png)
+Dashboard
+This page shows a summary of grocery activity and spending.
+![Dashboard Page](./screenshots/DashboardPage.png)
+grocerysharing.png
+This page allows users to create and manage their grocery list.
+![grocerysharing Page](./screenshots/grocerysharing.png)
+![grocery Page](./screenshots/groceryPage.png)
+ShoopingPage
+This page helps users track purchased items and calculate the total bill.
+![shooping Page](./screenshots/shoopingPage.png)
+PantryPage
+This page helps users track pantry items and expiry dates.
+![pantry Page](./screenshots/pantryPage.png)
+meal
+This page allows users to plan meals and see suggestions.
+![meal Page](./screenshots/mealPage.png)
+HistoryPage
+This page shows past shopping records and spending details.
+![History Page](./screenshots/HistoryPage.png)
