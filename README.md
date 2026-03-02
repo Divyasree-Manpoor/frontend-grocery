@@ -86,42 +86,58 @@ Frontend deployed on Netlify.
 🔗 Live Link:  Netlify link here
 🔗 Backend API: https://backend-grocery-19nr.onrender.com
 
-LandingPage
+**LandingPage**
+
 This page introduces the app and lets users go to login or register.
 ![Landing Page](./screenshots/LandingPage.png)
-RegisterPage
+
+
+**RegisterPage**
+
 This page allows new users to create an account.
 ![Register Page](./screenshots/RegisterPage.png)
-LoginPage
+
+
+**LoginPage**
+
 This page allows users to log in to their account.
 ![Login Page](./screenshots/LoginPage.png)
-Dashboard
+
+
+**Dashboard**
+
 This page shows a summary of grocery activity and spending.
 ![Dashboard Page](./screenshots/Dashboard.png)
 
-grocerysharing
+**grocerysharing**
+
 This page allows users to create and manage their grocery list.
 ![grocerysharing Page](./screenshots/grocerysharing.png)
 
 
+**groceryPage**
+
 ![grocery Page](./screenshots/groceryPage.png)
 
 
-ShoopingPage
+**ShoopingPage**
+
 This page helps users track purchased items and calculate the total bill.
 ![shooping Page](./screenshots/shoopingPage.png)
 
 
-PantryPage
+**PantryPage**
+
 This page helps users track pantry items and expiry dates.
 ![pantry Page](./screenshots/PantryPage.png)
 
 
-meal
+**meal**
+
 This page allows users to plan meals and see suggestions.
 ![meal Page](./screenshots/meal.png)
 
 
-HistoryPage
+**HistoryPage**
 This page shows past shopping records and spending details.
 ![History Page](./screenshots/HistoryPage.png)
