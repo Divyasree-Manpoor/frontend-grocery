@@ -8,7 +8,7 @@ import {
 
 import PantryForm from "../../components/pantry/PantryForm";
 import PantryList from "../../components/pantry/PantryList";
-import PantryAnalytics from "../../components/pantry/PantryAnalytics";
+import PantryAnalytics from "../../components/pantry/pantryAnalytics";
 import Loader from "../../components/common/Loader";
 import EmptyState from "../../components/common/EmptyState";
 import { toast } from "sonner";
