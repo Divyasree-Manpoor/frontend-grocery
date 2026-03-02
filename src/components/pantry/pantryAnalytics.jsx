@@ -39,7 +39,7 @@ const PantryAnalytics = ({ items = [] }) => {
     }, [items]);
 
   // ✅ Prevent rendering if no items
-  if (!items || items.length === 0) return null;
+  if (!items || items.length === 0) return null;//updated
 
   return (
     <div className="w-full bg-white dark:bg-gray-900 p-6 sm:p-8 rounded-3xl shadow-xl border border-orange-200 dark:border-gray-700 space-y-8">
