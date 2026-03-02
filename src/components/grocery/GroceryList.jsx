@@ -1,65 +1,33 @@
-import { useEffect, useState } from "react";
-import GroceryCard from "./GroceryCard";
+import GroceryListCard from "./GroceryListCard";
+import EmptyState from "../common/EmptyState";
 
 const GroceryList = ({ lists = [], refresh }) => {
-  const [lastOpenedId, setLastOpenedId] = useState(null);
-
-  /* ===================================
-     🔥 Highlight Last Opened List
-     (Frontend Only)
-  ==================================== */
-  useEffect(() => {
-    const stored = localStorage.getItem("lastOpenedList");
-    if (stored) {
-      const parsed = JSON.parse(stored);
-      setLastOpenedId(parsed.id);
-    }
-  }, []);
-
-  if (!lists || lists.length === 0) {
+  if (!lists.length) {
     return (
-      <div
-        className="
-          text-[#8D2B0B] dark:text-orange-300
-          text-lg text-center py-28
-          bg-white dark:bg-[#1f2937]
-          rounded-3xl
-          border border-orange-300 dark:border-orange-500/30
-          shadow-[0_30px_80px_rgba(191,54,12,0.2)]
-          dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)]
-        "
-      >
-        No grocery lists created yet.
-      </div>
+      <EmptyState
+        title="No Grocery Lists"
+        description="Create your first list to get started."
+      />
     );
   }
 
   return (
-    <div className="space-y-8">
-
-      {/* 🔥 Total Lists Counter */}
-      <div className="text-sm text-[#8D2B0B] dark:text-gray-400 font-medium">
+    <div className="w-full">
+      
+      <div>
         Total Lists: {lists.length}
       </div>
 
-      {lists.map((list) => (
-        <div
-          key={list.id}
-          className={`
-            transition-all duration-300
-            ${
-              list.id === lastOpenedId
-                ? "ring-2 ring-orange-400 rounded-3xl"
-                : ""
-            }
-          `}
-        >
-          <GroceryCard
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {lists.map((list) => (
+          <GroceryListCard
+            key={list.id}
             list={list}
             refresh={refresh}
           />
-        </div>
-      ))}
+        ))}
+      </div>
+
     </div>
   );
 };

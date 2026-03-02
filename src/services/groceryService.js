@@ -6,7 +6,7 @@ import API from "./api";
 
 // Create List
 export const createList = (data) =>
-  API.post("/grocery/list", data);
+  API.post("/grocery/lists", data);
 
 // Get Lists
 export const getLists = () =>
@@ -14,11 +14,11 @@ export const getLists = () =>
 
 // Update List
 export const updateList = (id, data) =>
-  API.put(`/grocery/list/${id}`, data);
+  API.put(`/grocery/lists/${id}`, data);
 
 // Delete List
 export const deleteList = (id) =>
-  API.delete(`/grocery/list/${id}`);
+  API.delete(`/grocery/lists/${id}`);
 
 
 /* =========================
@@ -27,7 +27,7 @@ export const deleteList = (id) =>
 
 // Add Item
 export const addItem = (data) =>
-  API.post("/grocery/item", data);
+  API.post("/grocery/items", data);
 
 // Get Items By List
 export const getItems = (listId) =>
@@ -35,48 +35,42 @@ export const getItems = (listId) =>
 
 // Update Item
 export const updateItem = (id, data) =>
-  API.put(`/grocery/item/${id}`, data);
+  API.put(`/grocery/items/${id}`, data);
 
 // Delete Item
 export const deleteItem = (id) =>
-  API.delete(`/grocery/item/${id}`);
+  API.delete(`/grocery/items/${id}`);
 
 
 /* =========================
-   💰 BUDGET + COUPONS
+   🎟 COUPONS
 ========================= */
-
-export const getBudgetSummary = () =>
-  API.get("/grocery/budget");
 
 export const getCoupons = (listId) =>
   API.get(`/grocery/coupons/${listId}`);
 
 
 /* =========================
-   🛍 SHOPPING
+   💰 BUDGET
 ========================= */
 
-// Complete Shopping
-// Complete Shopping
-// export const completeShopping = (data) =>
-//   API.post("/shopping/complete-shopping", data);
-export const completeShopping = (data) =>
-  API.post("/grocery/complete", data);
+export const getBudgetSummary = () =>
+  API.get("/grocery/budget");
 
-
-// Get Shopping History
-export const getShoppingHistory = () =>
-  API.get("/grocery/history");
-
-export const getMeals = () =>
-  API.get("/meals");
-
-export const getPantry = () =>
-  API.get("/pantry");
 
 /* =========================
-   🥫 PANTRY SERVICES
+   🛍 SHOPPING (Separate Route)
+========================= */
+
+export const completeShopping = (data) =>
+  API.post("/shopping/complete", data);
+
+export const getShoppingHistory = () =>
+  API.get("/shopping/history");
+
+
+/* =========================
+   🥫 PANTRY (Separate Route)
 ========================= */
 
 export const addPantryItem = (data) =>
@@ -84,3 +78,11 @@ export const addPantryItem = (data) =>
 
 export const getPantryItems = () =>
   API.get("/pantry");
+
+
+/* =========================
+   🍽 MEALS (Separate Route)
+========================= */
+
+export const getMeals = () =>
+  API.get("/meals/plans");

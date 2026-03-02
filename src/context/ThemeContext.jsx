@@ -1,29 +1,33 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState, useEffect } from "react";
 
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-  const [dark, setDark] = useState(false);
-
-  useEffect(() => {
+  const [dark, setDark] = useState(() => {
     const savedTheme = localStorage.getItem("theme");
 
-    if (savedTheme === "dark") {
-      setDark(true);
-      document.documentElement.classList.add("dark");
+    if (savedTheme) {
+      return savedTheme === "dark";
     }
-  }, []);
+
+    // Optional: detect system theme if no saved theme
+    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    if (dark) {
+      root.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      root.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [dark]);
 
   const toggleTheme = () => {
-    if (dark) {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    } else {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    }
-
-    setDark(!dark);
+    setDark((prev) => !prev);
   };
 
   return (

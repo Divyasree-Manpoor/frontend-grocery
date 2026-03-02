@@ -1,8 +1,6 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
-
 @theme inline {
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -115,36 +113,51 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply outline-ring/50;
   }
+
+  html {
+    @apply bg-background;
+    scroll-behavior: smooth;
+    transition: background-color 0.3s ease;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground antialiased transition-colors duration-300;
   }
 }
 
-/* Fix Chrome autofill background */
-/* Chrome autofill fix (dark mode safe) */
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-textarea:-webkit-autofill,
-select:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px var(--background) inset !important;
-  box-shadow: 0 0 0px 1000px var(--background) inset !important;
+/* ============================= */
+/* Autofill Fix (Dark Safe) */
+/* ============================= */
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px var(--background) inset !important;
   -webkit-text-fill-color: var(--foreground) !important;
-  transition: background-color 5000s ease-in-out 0s;
 }
-/* Hide number input arrows */
+
+/* ============================= */
+/* Remove number arrows */
+/* ============================= */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-input[type="number"] {
-  -moz-appearance: textfield;
+/* ============================= */
+/* Calendar icon dark fix */
+/* ============================= */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(0);
 }
 
+.dark input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+/* ============================= */
+/* Input Utility */
+/* ============================= */
 .input-style {
   @apply
     px-5 py-3
@@ -157,11 +170,43 @@ input[type="number"] {
     transition-all duration-200;
 }
 
-/* Fix calendar icon visibility in dark mode */
-input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(0);
+/* ============================= */
+/* Animations */
+/* ============================= */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.dark input[type="date"]::-webkit-calendar-picker-indicator {
-  filter: invert(1);
+.animate-fadeIn {
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* ============================= */
+/* Glass Effect (Dark Safe) */
+/* ============================= */
+.glass {
+  backdrop-filter: blur(20px);
+  background: oklch(1 0 0 / 0.6);
+}
+
+.dark .glass {
+  background: oklch(0.205 0 0 / 0.6);
+}
+
+/* ============================= */
+/* Card Utility */
+/* ============================= */
+.card-style {
+  @apply bg-card text-card-foreground rounded-3xl shadow-xl border border-border;
+}
+
+/* ============================= */
+/* Primary Button */
+/* ============================= */
+.btn-primary {
+  @apply bg-primary text-primary-foreground
+         hover:opacity-90
+         rounded-2xl px-6 py-3
+         font-semibold transition-all duration-200;
 }
