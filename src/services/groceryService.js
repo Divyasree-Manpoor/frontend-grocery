@@ -86,3 +86,14 @@ export const getPantryItems = () =>
 
 export const getMeals = () =>
   API.get("/meals/plans");
+
+export const getBill = (listId) =>
+  API.get(`/shopping/bill/${listId}`);
+
+export const getLatestBill = () => {
+  API.get("/shopping/latest-bill");
+};
+
+export const getBillById = (id) => {
+  API.get(`/history/${id}`);
+};

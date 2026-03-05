@@ -129,6 +129,7 @@ const MealPlannerForm = ({ onAdd }) => {
           dark:bg-gray-800 dark:text-white
         "
       >
+        <option value="">select</option>
         <option value="Breakfast">Breakfast</option>
         <option value="Lunch">Lunch</option>
         <option value="Dinner">Dinner</option>

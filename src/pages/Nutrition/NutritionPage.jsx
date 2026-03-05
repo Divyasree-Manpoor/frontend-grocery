@@ -66,7 +66,7 @@ const NutritionPage = () => {
       const dateObj = new Date(plan.meal_date);
       const formattedDate = dateObj.toLocaleDateString();
 
-      const meal = plan.meals || plan || {};
+      const meal = plan ;
 
       const calories = Number(meal.calories || 0);
       const protein = Number(meal.protein || 0);

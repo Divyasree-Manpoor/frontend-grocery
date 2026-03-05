@@ -7,6 +7,8 @@ import {
   History,
   X,
   Menu,
+  Activity,
+  HeartPulse
 } from "lucide-react";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
@@ -19,6 +21,12 @@ const Sidebar = ({ open = false, setOpen = () => {} }) => {
     { name: "Grocery", path: "/grocery", icon: ShoppingCart },
     { name: "Pantry", path: "/pantry", icon: Package },
     { name: "Meals", path: "/meals", icon: Utensils },
+
+    /* NEW FEATURES */
+
+    { name: "Nutrition", path: "/nutrition", icon: Activity },
+    { name: "Diet Planner", path: "/diet", icon: HeartPulse },
+
     { name: "History", path: "/history", icon: History },
     { name: "Shopping", path: "/shopping", icon: ShoppingCart },
   ];
