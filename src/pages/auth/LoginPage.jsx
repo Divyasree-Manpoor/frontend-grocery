@@ -1,6 +1,8 @@
+
 import { useState, useContext, useEffect } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
 import PasswordInput from "../../components/common/PasswordInput";
 import Loader from "../../components/common/Loader";
 
@@ -13,113 +15,137 @@ const LoginPage = () => {
     password: "",
   });
 
-  /* =============================
-     Redirect if already logged in
-  ============================== */
   useEffect(() => {
     if (user) navigate("/dashboard");
   }, [user, navigate]);
 
-  /* =============================
-     Handle Submit
-  ============================== */
   const handleSubmit = async (e) => {
     e.preventDefault();
     await login(form);
   };
 
   return (
-    <div
-      className="
-        min-h-screen flex items-center justify-center px-4
-        bg-gradient-to-br
-        from-orange-100 via-amber-100 to-orange-200
-        dark:from-gray-900 dark:via-gray-800 dark:to-gray-900
-        transition-colors duration-500
-      "
-    >
-      {/* Glass Card */}
-      <div
+    <>
+      {/* Back Button */}
+      <button
+        onClick={() => navigate("/")}
         className="
-          w-full max-w-md
-          bg-white/80 dark:bg-gray-900/80
-          backdrop-blur-xl
-          border border-orange-200 dark:border-gray-700
-          p-8 rounded-3xl
-          shadow-2xl
-          animate-fadeIn
+          fixed top-5 left-5 z-50
+          flex items-center gap-2
+          px-4 py-2
+          rounded-xl
+          bg-white dark:bg-gray-800
+          text-gray-700 dark:text-white
+          shadow-lg
+          hover:scale-105
+          transition-all duration-300
         "
       >
-        {/* Heading */}
-        <h2
-          className="
-            text-3xl font-bold text-center
-            text-orange-600 dark:text-orange-400
-            mb-8
-          "
-        >
+        <ArrowLeft size={18} />
+        Back
+      </button>
+
+      {/* Login Card */}
+      <div
+        className="
+          w-full
+          max-w-md
+
+          bg-white
+          dark:bg-gray-900
+
+          rounded-3xl
+
+          shadow-2xl
+
+          border
+          border-orange-200
+          dark:border-gray-700
+
+          p-8
+        "
+      >
+        <div className="text-center mb-6">
+          <h1 className="text-4xl font-bold text-orange-600 dark:text-orange-400">
+            GroceryGo
+          </h1>
+
+          <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">
+            Smart Grocery Management
+          </p>
+        </div>
+
+        <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
           Welcome Back 👋
         </h2>
 
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Email */}
+        <form onSubmit={handleSubmit} className="space-y-4">
           <input
             type="email"
-            placeholder="Email"
-            autoComplete="email"
+            placeholder="Email Address"
             required
+            autoComplete="email"
             value={form.email}
             onChange={(e) =>
-              setForm({ ...form, email: e.target.value })
+              setForm({
+                ...form,
+                email: e.target.value,
+              })
             }
             className="
-              w-full px-4 py-3 rounded-xl
+              w-full
+              px-4 py-3
+              rounded-xl
               bg-orange-50 dark:bg-gray-800
               border border-orange-200 dark:border-gray-600
               text-gray-800 dark:text-white
               focus:ring-2 focus:ring-orange-500
-              focus:border-orange-500
-              outline-none transition duration-200
+              outline-none
             "
           />
 
-          {/* Password */}
           <PasswordInput
             value={form.password}
             onChange={(e) =>
-              setForm({ ...form, password: e.target.value })
+              setForm({
+                ...form,
+                password: e.target.value,
+              })
             }
             placeholder="Password"
           />
 
-          {/* Login Button */}
           <button
             type="submit"
             disabled={loading}
             className="
-              w-full py-3 rounded-xl
+              w-full
+              py-3
+              rounded-xl
               bg-orange-600 hover:bg-orange-700
               dark:bg-orange-500 dark:hover:bg-orange-600
               text-white font-semibold
-              transition duration-300
               flex items-center justify-center gap-2
-              disabled:opacity-70 disabled:cursor-not-allowed
-              hover:scale-[1.02]
+              transition-all duration-300
+              disabled:opacity-70
             "
           >
-            {loading && <Loader size="sm" color="white" />}
+            {loading && (
+              <Loader size="sm" color="white" />
+            )}
+
             {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 
-        {/* Register Link */}
-        <p className="text-sm text-center text-gray-700 dark:text-gray-300 mt-6">
-          Don’t have an account?{" "}
+        <p className="text-center text-sm text-gray-600 dark:text-gray-400 mt-5">
+          Don't have an account?{" "}
           <Link
             to="/register"
             className="
               font-semibold
-              text-orange-600 dark:text-orange-400
+              text-orange-600
+              dark:text-orange-400
               hover:underline
             "
           >
@@ -127,20 +153,7 @@ const LoginPage = () => {
           </Link>
         </p>
       </div>
-
-      {/* Animation */}
-      <style>
-        {`
-          @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-          }
-          .animate-fadeIn {
-            animation: fadeIn 0.4s ease-in-out;
-          }
-        `}
-      </style>
-    </div>
+    </>
   );
 };
 

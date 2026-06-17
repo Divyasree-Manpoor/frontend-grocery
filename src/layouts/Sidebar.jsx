@@ -1,3 +1,4 @@
+
 import { NavLink } from "react-router-dom";
 import {
   LayoutDashboard,
@@ -8,7 +9,7 @@ import {
   X,
   Menu,
   Activity,
-  HeartPulse
+  HeartPulse,
 } from "lucide-react";
 import { useContext } from "react";
 import { AuthContext } from "../context/AuthContext";
@@ -21,12 +22,8 @@ const Sidebar = ({ open = false, setOpen = () => {} }) => {
     { name: "Grocery", path: "/grocery", icon: ShoppingCart },
     { name: "Pantry", path: "/pantry", icon: Package },
     { name: "Meals", path: "/meals", icon: Utensils },
-
-    /* NEW FEATURES */
-
     { name: "Nutrition", path: "/nutrition", icon: Activity },
     { name: "Diet Planner", path: "/diet", icon: HeartPulse },
-
     { name: "History", path: "/history", icon: History },
     { name: "Shopping", path: "/shopping", icon: ShoppingCart },
   ];
@@ -38,15 +35,21 @@ const Sidebar = ({ open = false, setOpen = () => {} }) => {
         onClick={() => setOpen(true)}
         className="
           fixed top-4 left-4 z-50 md:hidden
-          p-2.5 rounded-xl
-          bg-white dark:bg-gray-900
+          p-3 rounded-xl
+          bg-white
+          dark:bg-gray-900
+          border border-gray-200
+          dark:border-gray-700
           shadow-lg
-          border border-orange-200 dark:border-gray-700
-          hover:scale-105 active:scale-95
-          transition
+          hover:scale-105
+          active:scale-95
+          transition-all
         "
       >
-        <Menu size={22} className="text-orange-500 dark:text-orange-400" />
+        <Menu
+          size={22}
+          className="text-orange-500 dark:text-orange-400"
+        />
       </button>
 
       {/* MOBILE OVERLAY */}
@@ -54,9 +57,9 @@ const Sidebar = ({ open = false, setOpen = () => {} }) => {
         <div
           className="
             fixed inset-0 z-40
-            bg-black/40 backdrop-blur-sm
+            bg-black/40
+            backdrop-blur-sm
             md:hidden
-            transition-opacity duration-300
           "
           onClick={() => setOpen(false)}
         />
@@ -65,13 +68,31 @@ const Sidebar = ({ open = false, setOpen = () => {} }) => {
       {/* SIDEBAR */}
       <aside
         className={`
-          fixed md:static z-50
-          top-0 left-0 h-full w-64
-          bg-white dark:bg-gray-900
-          border-r border-orange-100 dark:border-gray-800
-          p-6 flex flex-col
-          shadow-2xl md:shadow-none
-          transition-transform duration-300 ease-in-out
+          fixed md:sticky
+          top-0 left-0
+          z-50
+
+          h-screen
+          w-64
+
+          bg-white
+          dark:bg-gray-900
+
+          border-r
+          border-gray-200
+          dark:border-gray-800
+
+          p-6
+          flex flex-col
+
+          shadow-xl
+          dark:shadow-2xl
+          md:shadow-none
+
+          transition-transform
+          duration-300
+          ease-in-out
+
           ${open ? "translate-x-0" : "-translate-x-full"}
           md:translate-x-0
         `}
@@ -81,30 +102,44 @@ const Sidebar = ({ open = false, setOpen = () => {} }) => {
           <h2 className="text-xl font-bold text-orange-500">
             GroceryGo
           </h2>
+
           <button
             onClick={() => setOpen(false)}
             className="
-              p-1.5 rounded-lg
-              hover:bg-gray-100 dark:hover:bg-gray-800
-              transition
+              p-2 rounded-lg
+              hover:bg-gray-100
+              dark:hover:bg-gray-800
+              transition-colors
             "
           >
-            <X size={20} className="text-gray-600 dark:text-gray-300" />
+            <X
+              size={20}
+              className="text-gray-600 dark:text-gray-300"
+            />
           </button>
         </div>
 
         {/* DESKTOP BRAND */}
-        <div className="hidden md:block mb-12">
+        <div className="hidden md:block mb-10">
           <h2 className="text-2xl font-bold text-orange-500">
             GroceryGo
           </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 truncate">
-            {user?.name}
+
+          <p
+            className="
+              mt-1
+              text-sm
+              text-gray-500
+              dark:text-gray-400
+              truncate
+            "
+          >
+            {user?.name || "Welcome"}
           </p>
         </div>
 
         {/* NAVIGATION */}
-        <nav className="space-y-2">
+        <nav className="flex-1 space-y-1 overflow-y-auto">
           {menu.map((item) => {
             const Icon = item.icon;
 
@@ -117,21 +152,30 @@ const Sidebar = ({ open = false, setOpen = () => {} }) => {
                   `
                   flex items-center gap-4
                   px-4 py-3
-                  rounded-2xl
+                  rounded-xl
+
                   font-medium
+
                   transition-all duration-300
+
                   ${
                     isActive
-                      ? "bg-orange-500 text-white shadow-md"
-                      : "text-gray-700 dark:text-gray-300 hover:bg-orange-50 dark:hover:bg-gray-800"
+                      ? "bg-orange-500 text-white shadow-lg shadow-orange-500/20"
+                      : `
+                        text-gray-700
+                        dark:text-gray-300
+
+                        hover:bg-orange-50
+                        dark:hover:bg-gray-800
+
+                        hover:text-orange-600
+                        dark:hover:text-orange-400
+                      `
                   }
                 `
                 }
               >
-                <Icon
-                  size={20}
-                  className="transition-colors duration-300"
-                />
+                <Icon size={20} />
                 <span>{item.name}</span>
               </NavLink>
             );
@@ -139,12 +183,22 @@ const Sidebar = ({ open = false, setOpen = () => {} }) => {
         </nav>
 
         {/* FOOTER */}
-        <div className="
-          mt-auto pt-10
-          text-xs
-          text-gray-400 dark:text-gray-500
-          text-center
-        ">
+        <div
+          className="
+            mt-6
+            pt-6
+
+            border-t
+            border-gray-200
+            dark:border-gray-800
+
+            text-center
+            text-xs
+
+            text-gray-500
+            dark:text-gray-400
+          "
+        >
           © {new Date().getFullYear()} GroceryGo
         </div>
       </aside>

@@ -1,8 +1,7 @@
-
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
-import { Toaster } from "sonner";   // ✅ ADD THIS
+import { Toaster } from "sonner";
 
 import App from "./App";
 import { AuthProvider } from "./context/AuthContext";
@@ -15,7 +14,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     <ThemeProvider>
       <AuthProvider>
         <App />
-        <Toaster richColors position="top-right" />   {/* ✅ ADD THIS */}
+        <Toaster richColors position="top-right" />
       </AuthProvider>
     </ThemeProvider>
   </BrowserRouter>

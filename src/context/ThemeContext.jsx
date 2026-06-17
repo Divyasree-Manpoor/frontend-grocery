@@ -10,20 +10,17 @@ export const ThemeProvider = ({ children }) => {
       return savedTheme === "dark";
     }
 
-    // Optional: detect system theme if no saved theme
-    return window.matchMedia("(prefers-color-scheme: dark)").matches;
+    // Default Theme = Light Mode
+    return false;
   });
 
   useEffect(() => {
-    const root = document.documentElement;
+    document.documentElement.classList.toggle("dark", dark);
 
-    if (dark) {
-      root.classList.add("dark");
-      localStorage.setItem("theme", "dark");
-    } else {
-      root.classList.remove("dark");
-      localStorage.setItem("theme", "light");
-    }
+    localStorage.setItem(
+      "theme",
+      dark ? "dark" : "light"
+    );
   }, [dark]);
 
   const toggleTheme = () => {
@@ -31,7 +28,12 @@ export const ThemeProvider = ({ children }) => {
   };
 
   return (
-    <ThemeContext.Provider value={{ dark, toggleTheme }}>
+    <ThemeContext.Provider
+      value={{
+        dark,
+        toggleTheme,
+      }}
+    >
       {children}
     </ThemeContext.Provider>
   );
